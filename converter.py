@@ -79,19 +79,79 @@ def converter(num, in_base, out_base):
 
 
 def main():
-	borda = '-='
+	menu = [
+		'Decimal -> Binário',
+		'Decimal -> Hexadecimal',
+		'Binário -> Decimal',
+		'Binário -> Hexadecimal',
+		'Hexadecimal -> Decimal',
+		'Hexadecimal -> Binário',	
+		'Decimal -> Octal',
+		'Octal -> Decimal',
+		'Hexadecimal -> Octal',
+		'Octal -> Hexadecimal',
+		'Binário -> Octal',
+		'Octal -> Binário'
+	]
 
-	print('{}-'.format(borda*10))
-	print('CONVERSOR DE BASES')
-	print('{}-'.format(borda*10))
+	print('-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-')
+	print('|              CONVERSOR DE BASES                 |')
+	print('-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-\n')
+	print('Digite o número da conversão desejada:')
+	print('+============================================+')
+
+	# Menu creation
+	for i in range(0, len(menu)):
+		print('({}) - {}'.format(i + 1, menu[i]))
 	
-	print('Digite a base do número:')
-	base_entrada = int(input())
-	print('Digite o número:')
-	numero = input()
-	print('Digite a base de saída:')
-	base_saida = int(input())
-	
-	print(converter(numero, base_entrada, base_saida))
-	#print(x_to_dec(numero, base_entrada))
+	print('+============================================+\n')
+
+	escolha = int(input('|~~~> '))
+	escolha -= 1 # to get the index, because the user will put index + 1
+
+	if escolha not in range(0, len(menu)):
+		print('Escolha uma opção válida!')
+		exit()
+
+	print('\n==============================================')
+	print('Digite o número a ser convertido ({}):\n'.format(menu[escolha]))
+	numero = input('|~~~> ')
+	print('================================================\n')
+	if escolha == 0:
+		print(menu[escolha])
+		print('\n{} -> {}'.format(numero, converter(numero, 10, 2)))
+	elif escolha == 1:
+		print(menu[escolha])
+		print('\n{} -> {}'.format(numero, converter(numero, 10, 16)))
+	elif escolha == 2:
+		print(menu[escolha])
+		print('\n{} -> {}'.format(numero, converter(numero, 2, 10)))
+	elif escolha == 3:
+		print(menu[escolha])
+		print('\n{} -> {}'.format(numero, converter(numero, 2, 16)))
+	elif escolha == 4:
+		print(menu[escolha])
+		print('\n{} -> {}'.format(numero, converter(numero, 16, 10)))
+	elif escolha == 5:
+		print(menu[escolha])
+		print('\n{} -> {}'.format(numero, converter(numero, 16, 2)))
+	elif escolha == 6:
+		print(menu[escolha])
+		print('\n{} -> {}'.format(numero, converter(numero, 10, 8)))
+	elif escolha == 7:
+		print(menu[escolha])
+		print('\n{} -> {}'.format(numero, converter(numero, 8, 10)))
+	elif escolha == 8:
+		print(menu[escolha])
+		print('\n{} -> {}'.format(numero, converter(numero, 16, 8)))
+	elif escolha == 9:
+		print(menu[escolha])
+		print('\n{} -> {}'.format(numero, converter(numero, 8, 16)))
+	elif escolha == 10:
+		print(menu[escolha])
+		print('\n{} -> {}'.format(numero, converter(numero, 2, 8)))
+	elif escolha == 11:
+		print(menu[escolha])
+		print('\n{} -> {}'.format(numero, converter(numero, 8, 2)))
+
 main()
